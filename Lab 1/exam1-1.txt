@@ -1,0 +1,15 @@
+#include <stdio.h>
+int main() {
+    lengthBumpy(10);
+}
+int lengthBumpy(int n){
+    for(int i = n;i>1;){
+        if(i%2==0){
+            i = i/2;
+        }
+        else{
+            i = i*3+1;
+        }
+        printf("%d ",i);
+    }
+}
