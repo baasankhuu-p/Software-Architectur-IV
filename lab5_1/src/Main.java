@@ -6,9 +6,9 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         while(1==1) {
             System.out.println("===========Start===========");
-            System.out.print("Цалингаа оруулна уу: ");
+            System.out.print("Salary: ");
             Salary = sc.nextInt();
-            System.out.print("Аль нэгийн сонгоно уу 1) 2020 2) 2021 3) гарах: ");
+            System.out.print("Choose 1) 2020 2) 2021 3) exit: ");
             type = sc.nextInt();
             switch (type){
                 case 1: {

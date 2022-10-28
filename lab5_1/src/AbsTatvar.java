@@ -19,14 +19,13 @@ public abstract class AbsTatvar{
         this.GATS = (long) (TNO - NAT+CHT);
     }
     public void show() {
-        System.out.println("Оруулсан цалин: "+Salary);
-        System.out.println("НДШ: "+NDSH);
-        System.out.println("Татвар ногдуулах орлого: "+TNO);
-        System.out.println("Ногдуулсан албан татвар: "+NAT);
-        System.out.println("Чөлөөлөгдөх татвар: "+CHT);
-        System.out.println("Төлбөл зохих татвар: "+TZT);
-        System.out.println("Гарт авах цалин: "+GATS);
+        System.out.println("Iput Salary: "+Salary);
+        System.out.println("Niigmiin daatgal: "+NDSH);
+        System.out.println("Tatvar noogduulah orlogo: "+TNO);
+        System.out.println("Noogduulsan alban tatvar: "+NAT);
+        System.out.println("Choloologdoh tatvar: "+CHT);
+        System.out.println("Tolbol zohih tatvar: "+TZT);
+        System.out.println("Gart avah tsalin: "+GATS);
         System.out.println("===========End===========");
     }
-
 }
