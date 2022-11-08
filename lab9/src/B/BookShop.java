@@ -8,7 +8,7 @@ public class BookShop {
     String [] bookName = {"B1","B2","B3","B4","B5"};
     Integer [] bookCount = {5,5,5,5,5};
     BookShop(){
-        DataBuild(data);
+        data = DataBuild(data);
     }
     public Map DataBuild(Map<String, Integer> data){
         for (int i = 0; i<bookCount.length;i++){
@@ -16,4 +16,11 @@ public class BookShop {
         }
         return data;
     }
+    public void dataBook(){
+        for (Map.Entry<String, Integer> set :
+                data.entrySet()) {
+            System.out.println("** "+set.getKey() + " ** = " + set.getValue() +" ш үлдсэн");
+        }
+    }
+
 }
