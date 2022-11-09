@@ -1,0 +1,27 @@
+BookShop
+{
+	/* Map */
+	Map<Integer, BookInfo> 
+	Map<Integer, User> usersMap
+	/* method */
+	public BookInfo BookCreate(BookInfo book, int bookId)
+	public Map<Integer, BookInfo> getBooks()
+	public void BookInfo()
+	public void UserCreate(User user, int phone)
+	public Map<Integer, User> getUsers()
+}
+Build
+Order{
+    Map<Integer, BookInfo> bookMap;
+    Map<Integer, User> usersMap;
+
+	public void BookCreate(Map<Integer, BookInfo> bookData)
+	public void UserCreate(Map<Integer, User> usersData)
+	public void Ordered()
+	public BookInfo setBookInfo(BookInfo book)
+	public User setUsersInfo(User user, int Book_pay, String bookName)
+	public void UsersInfo()
+	public void BookInfo()
+	public void notification(int val)
+}
+User

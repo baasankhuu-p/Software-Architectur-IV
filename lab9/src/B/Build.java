@@ -1,38 +1,88 @@
 package B;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.awt.print.Book;
 import java.util.Scanner;
 
 public class Build {
     Scanner sc = new Scanner(System.in);
-    BookShop Shop =  new BookShop();
-    Map<String,Integer> UserInfo = new HashMap<>();
-    Build(){
-        int bool = 1;
-        Shop.dataBook();
-        while(bool == 1){
-            System.out.print("******************Хэрэглэгч үүсгэх үү!******************\n" +
-                    "1. Тийм Бусад. Болих!\n");
-            bool = sc.nextInt();
-            UserBuild();
+    BookShop shop = new BookShop();
+    Order order = new Order();
+
+    Build() {
+        /*User variable*/
+        String name, address;
+        int bookCount = 0, phone, pay, createUser;
+
+        /*Book variable*/
+        String bookName, bookAuthor;
+        int bookId,payBook;
+        int createBook,createBookCount;
+
+        System.out.println("Дэлгүүрт ном нэмэх (Тоог оруулна уу)");
+        createBook = sc.nextInt();
+        System.out.println("Дэлгүүрт Хэрэглэгч нэмэх (Тоог оруулна уу)");
+        createUser = sc.nextInt();
+
+        int i = 0;
+        while (createBook>i){
+            System.out.println("********* Дэлгүүрт Ном нэмэх *********");
+            System.out.print("Номны Нэрийг оруулна уу: ");
+            bookName = sc.next();
+            System.out.print("Зохиогчийг оруулна уу: ");
+            bookAuthor = sc.next();
+            System.out.print("Номны дугаар: ");
+            bookId = sc.nextInt();
+            System.out.print("Номны Үнэ: ");
+            payBook = sc.nextInt();
+            System.out.print("Хэвлэгдсэн тоо: ");
+            createBookCount = sc.nextInt();
+            BookInfo book = new BookInfo(bookName,bookAuthor,bookId,payBook,createBookCount);
+            shop.BookCreate(book,book.bookId);
+            i++;
         }
-    }
-    public User UserBuild(){
-        String name,address;
-        int phone;
+        System.out.println("Бүртгэсэн номны мэдээллийг энэд харуулна");
+        shop.BookInfo();
+        System.out.println("\n");
 
-        System.out.println("Та нэрээ оруулна уу");
-        name = sc.next();
+        i = 0;
+        while (createUser>i) {
+            System.out.println("********* Дэлгүүрт хэрэглэгч нэмэх *********");
+            System.out.print("Нэрээ оруулна уу: ");
+            name = sc.next();
+            System.out.print("Хаягаа оруулна уу: ");
+            address = sc.next();
+            System.out.print("Дугаараа оруулна уу: ");
+            phone = sc.nextInt();
+            System.out.print("Та дансандаа хэдийг хийх вэ: ");
+            pay = sc.nextInt();
+            /*Хэрэглэгч бүртгэгдлээ*/
+            User user = new User(name, address, bookCount, phone, pay);
+            /*Хэрэглэгч бүртгэгдэхээс гадна ном захиалах эрхтэй*/
+            shop.UserCreate(user, phone);
+            i++;
+        }
+        System.out.println("-----------All Data-----------");
+        System.out.println("Бүртгэсэн номны мэдээллийг энэд харуулна");
+        shop.BookInfo();
+        System.out.println("Бүртгэсэн хэрэглэгчийн мэдээллийг энэд харуулна");
+        shop.UsersInfo();
 
-        System.out.println("Та хаягаа оруулна уу");
-        address = sc.next();
+        int orderCheck;
+        /*Дэлгүүрийн ном болон хэрэглэгчийн мэдээлэл захиалгын классд байх хэрэгтэй*/
+        order.UserCreate(shop.getUsers());
+        order.BookCreate(shop.getBooks());
 
-        System.out.println("Та дугаараа оруулна уу");
-        phone = sc.nextInt();
-
-        User user = new User(name, address, phone);
-        user.Asuulga();
-        return user;
+        while (1>0){
+            System.out.println("Та ном захиалах уу:\n |** (1)Тийм\t (Бусад)Үгүй программыг зогсоох **|");
+            orderCheck = sc.nextInt();
+            switch (orderCheck){
+                case 1:{
+                    order.Ordered();
+                }
+                case 2:{
+                    order.exitPrintData();
+                }
+            }
+        }
     }
 }

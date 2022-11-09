@@ -1,26 +1,46 @@
 package B;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
-public class BookShop {
-    Map<String, Integer> data = new HashMap<>();
-    String [] authName = {"A1","A2","A3","A4","A5"};
-    String [] bookName = {"B1","B2","B3","B4","B5"};
-    Integer [] bookCount = {5,5,5,5,5};
-    BookShop(){
-        data = DataBuild(data);
+public class BookShop implements IShop {
+    /*Номнуудаа бүртгэх*/
+    Map<Integer, BookInfo> bookMap = new HashMap<>();
+    Map<Integer, User> usersMap = new HashMap<>();
+    public void BookCreate(BookInfo book, int bookId) {
+        bookMap.put(book.bookId,book);
     }
-    public Map DataBuild(Map<String, Integer> data){
-        for (int i = 0; i<bookCount.length;i++){
-            data.put("Зохиолч: "+authName[i]+" Ном: "+bookName[i],bookCount[i]);
+    public Map<Integer, BookInfo> getBooks(){
+        return bookMap;
+    }
+    public void BookInfo() {
+        for (Map.Entry<Integer, BookInfo> set :
+                bookMap.entrySet()) {
+            System.out.println("№("+set.getKey() + ") => " + "\t|\tНэр: "
+                    + set.getValue().bookName + "\t|\tЗохиолч: " +
+                    set.getValue().bookAuthor + "\t|\t Үнэ: " +
+                    set.getValue().payBook + "\t|\t Тоо: " +
+                    set.getValue().createBookCount);
         }
-        return data;
     }
-    public void dataBook(){
-        for (Map.Entry<String, Integer> set :
-                data.entrySet()) {
-            System.out.println("** "+set.getKey() + " ** = " + set.getValue() +" ш үлдсэн");
+    /*Хэрэглэгч бүртгэх*/
+    public void UserCreate(User user, int phone) {
+        usersMap.put(user.phone, user);
+    }
+    public Map<Integer, User> getUsers(){
+        return usersMap;
+    }
+    public void UsersInfo() {
+        for (Map.Entry<Integer, User> set :
+                usersMap.entrySet()) {
+            System.out.println("№("+set.getKey() + ") => " + "\t|\t Хаяг: " +
+                    set.getValue().address + "\t|\t Нэр: " +
+                    set.getValue().name + "\t|\t Утас: " +
+                    set.getValue().phone + "\t|\t Байгаа номны тоо: " +
+                    set.getValue().bookCount +"\t|\t Дансанд байгаа үлдэгдэл: " +
+                    set.getValue().pay +"\t|\t Танд байгаа номнуудын тоо: " +
+                    set.getValue().getBooks().size()
+            );
         }
     }
-
 }

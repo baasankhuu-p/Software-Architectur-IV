@@ -1,44 +1,37 @@
 package B;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class User {
-    String name, address;
-    int phone,BooksCount;
+    List<String> books = new ArrayList<>();
+    String name,address;
+    int bookCount, phone,pay;
 
-    public int getBooksCount() {
-        return BooksCount;
+    Scanner sc = new Scanner(System.in);
+
+    public int getPay() {
+        return pay;
     }
 
-    public void setBooksCount(int BookCount) {
-        this.BooksCount += BookCount;
+    public void setPay(int pay) {
+        this.pay -= pay;
     }
 
-    Scanner scanner = new Scanner(System.in);
-    public User(String name, String address, int phone) {
+    public User(String name, String address, int bookCount, int phone, int pay) {
         this.name = name;
         this.address = address;
+        this.bookCount = bookCount;
         this.phone = phone;
-        this.BooksCount = 0;
+        this.pay = pay;
     }
 
-    public String getName() {
-        return name;
+    public List<String> getBooks() {
+        return books;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public int getPhone() {
-        return phone;
-    }
-
-    public void Asuulga(){
-        int bool = 1;
-        while (bool==1){
-            System.out.println("Та ном захиалах уу?\t1.Тийм Бусад 2. Үгүй");
-            bool = scanner.nextInt();
-        }
+    public void setBooks(String book) {
+        this.books.add(book);
     }
 }
