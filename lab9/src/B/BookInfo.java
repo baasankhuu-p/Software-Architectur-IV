@@ -4,10 +4,6 @@ public class BookInfo {
     String bookName,bookAuthor;
     int createBookCount,payBook,bookId;
 
-    public int getCreateBookCount() {
-        return createBookCount;
-    }
-
     public void setCreateBookCount() {
         this.createBookCount--;
     }

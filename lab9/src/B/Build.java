@@ -9,6 +9,7 @@ public class Build {
     Order order = new Order();
 
     Build() {
+        System.out.println("-----------Эхлэх-----------");
         /*User variable*/
         String name, address;
         int bookCount = 0, phone, pay, createUser;
@@ -61,28 +62,37 @@ public class Build {
             shop.UserCreate(user, phone);
             i++;
         }
-        System.out.println("-----------All Data-----------");
-        System.out.println("Бүртгэсэн номны мэдээллийг энэд харуулна");
-        shop.BookInfo();
-        System.out.println("Бүртгэсэн хэрэглэгчийн мэдээллийг энэд харуулна");
-        shop.UsersInfo();
 
-        int orderCheck;
         /*Дэлгүүрийн ном болон хэрэглэгчийн мэдээлэл захиалгын классд байх хэрэгтэй*/
-        order.UserCreate(shop.getUsers());
-        order.BookCreate(shop.getBooks());
+        if(shop.bookMap.size()>0 && shop.usersMap.size()>0){
 
-        while (1>0){
-            System.out.println("Та ном захиалах уу:\n |** (1)Тийм\t (Бусад)Үгүй программыг зогсоох **|");
-            orderCheck = sc.nextInt();
-            switch (orderCheck){
-                case 1:{
-                    order.Ordered();
-                }
-                case 2:{
-                    order.exitPrintData();
+            System.out.println("-----------Бүх өгөгдөл-----------");
+            System.out.println("Бүртгэсэн номны мэдээллийг энэд харуулна");
+            shop.BookInfo();
+            System.out.println("Бүртгэсэн хэрэглэгчийн мэдээллийг энэд харуулна");
+            shop.UsersInfo();
+
+            int orderCheck;
+
+            order.BookCreate(shop.getBooks());
+            order.UserCreate(shop.getUsers());
+            while (1>0){
+                System.out.println("Та ном захиалах уу:\n*** (1)Тийм\t (Бусад)Үгүй программыг зогсоох ***");
+                orderCheck = sc.nextInt();
+                switch (orderCheck){
+                    case 1:{
+                        order.Ordered();
+                    }
+                    case 2:{
+                        order.exitPrintData();
+                    }
                 }
             }
+        }
+        else{
+            System.out.println("-----------Өгөгдөл олдсонгүй-----------");
+            System.out.println("Хэрэглэгч эсвэл номны мэдээлэл байхгүй байна\nТа дахин мэдээллээ оруулна уу");
+            new Build();
         }
     }
 }

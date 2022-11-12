@@ -50,7 +50,7 @@ public class Order implements IShop {
                     if (item.getValue().bookId == bookID && item.getValue().createBookCount > 0) {
                         for (Map.Entry<Integer, User> userEntry : usersMap.entrySet()) {
                             if(userEntry.getValue().phone == phoneNumber && userEntry.getValue().pay >= item.getValue().payBook){
-                                setBookInfo(item.getValue());
+                                setBookCount(item.getValue());
                                 userEntry.setValue(
                                         setUsersInfo(userEntry.getValue(), item.getValue().payBook, item.getValue().bookName)
                                 );
@@ -76,10 +76,11 @@ public class Order implements IShop {
     }
 
     public void exitPrintData() {
+        System.out.println("----------- Дууслаа-----------");
         System.exit(0);
     }
 
-    public BookInfo setBookInfo(BookInfo book) {
+    public BookInfo setBookCount(BookInfo book) {
         book.setCreateBookCount();
         return book;
     }
@@ -122,17 +123,21 @@ public class Order implements IShop {
     }
 
     public void notification(int val) {
+        System.out.println("=> Мэдээлэл: ");
         if (val == 0) {
             System.out.println("Ном олдсонгүй!!!");
         } else if (val == 1) {
             System.out.println("Амжилттай захиаллаа");
         } else if (val == 2) {
-            System.out.println("Хэрэглэгч олдсонгүй");
+            System.out.println("Хэрэглэгчийн дугаар буруу байна");
         } else if (val == 3) {
             System.out.println("Амжилтгүй ном дууссан байна");
         } else if (val == 4) {
             System.out.println("Дансан дахь үлдэгдэл хүрэлцэхгүй байна");
         }
+        prints();
+    }
+    public void prints(){
         System.out.println("Дэлгүүрт байгаа номнууд: ");
         BookInfo();
         System.out.println("Хэрэглэгчид: ");
