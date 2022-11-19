@@ -32,7 +32,7 @@ public class Huselt extends AlbanBichig{
 
     @Override
     public void signature() {
-        System.out.println("\n***Таны гарын үсэг бүртгэгдлээ***");
+        System.out.println("\n***Таны гарын үсэг бүртгэгдлээ*** "+signature);
     }
 
     @Override

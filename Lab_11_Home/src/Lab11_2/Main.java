@@ -1,7 +1,4 @@
 package Lab11_2;
-
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
